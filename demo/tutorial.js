@@ -9,6 +9,7 @@
 			'tutorial_next' : 'tutorial-next',
 			'tutorial_previous' : 'tutorial-previous',
 			'tutorial_complete' : 'tutorial-completed',
+			'tutorial_restart' : 'tutorial-restart',
 			'nav_selector' : 'navbar',
 			'speed' : 250
 		}, options );
@@ -61,6 +62,17 @@
 
 			$('.tutorial-item-wrap').remove();
 			step = 0;
+
+			e.preventDefault();
+
+		});
+
+		$('body').on('click', '.'+ config.tutorial_restart, function( e ) {
+
+			$('.tutorial-item-wrap').remove();
+			step = 0;
+
+			get_tutorial_step();
 
 			e.preventDefault();
 

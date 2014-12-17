@@ -54,6 +54,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Link</a></li>
+				<li><a class="tutorial-restart" href="#"><span class="fa fa-refresh"></span> Restart tutorial</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle tutorial-profile" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-user"></span> Profile <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
