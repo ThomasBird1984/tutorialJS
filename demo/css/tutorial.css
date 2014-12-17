@@ -1,0 +1,15 @@
+.class-tutorial-relative { position: relative; }
+
+.tutorial-item-wrap { position: absolute; min-width: 300px; max-width: 80%; margin-top: 20px; z-index: 9999; }
+	.tutorial-item-wrap.left { left: 0; }
+	.tutorial-item-wrap.right { right: 0; }
+
+	.tutorial-item-wrap a {}
+	.tutorial-arrow { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; margin-top: -10px; }
+		.tutorial-item-wrap.left .tutorial-arrow { float: left; margin-left: 20px; }
+		.tutorial-item-wrap.right .tutorial-arrow { float: right; margin-right: 20px; }
+	.tutorial-item-header, .tutorial-item-content, .tutorial-item-actions { padding: 10px 15px;  }
+		.tutorial-item-header, .tutorial-item-actions {}
+		.tutorial-item-header {}
+		.tutorial-item-content {}
+		.tutorial-item-actions { }
