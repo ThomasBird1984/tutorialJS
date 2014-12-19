@@ -6,6 +6,7 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Configuration Settings    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 		var config = $.extend({
+			'tutorial_btn' : 'tutorial-btn',
 			'tutorial_next' : 'tutorial-next',
 			'tutorial_start' : 'tutorial-start',
 			'tutorial_previous' : 'tutorial-previous',
