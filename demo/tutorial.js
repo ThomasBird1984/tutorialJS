@@ -7,11 +7,13 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 		var config = $.extend({
 			'tutorial_next' : 'tutorial-next',
+			'tutorial_start' : 'tutorial-start',
 			'tutorial_previous' : 'tutorial-previous',
 			'tutorial_complete' : 'tutorial-completed',
 			'tutorial_restart' : 'tutorial-restart',
 			'nav_selector' : 'navbar',
-			'speed' : 250
+			'speed' : 250,
+			'autostart' : false
 		}, options );
 
 		var step = 0,
@@ -25,24 +27,20 @@
 
 		// add a position relative to all wrapping elements for proper placement of tutorial elements
 		$( this[0].steps ).each( function() {
-
 			$( this.target ).addClass('class-tutorial-relative');
-
 		});
 
-		$( window ).on('load', function() {
-
-			get_tutorial_step();
-
-		});
+		if( config.autostart ) {
+			$( window ).on('load', function() {
+				get_tutorial_step();
+			});
+		}
 
 		$( 'body' ).on('click', '.'+ config.tutorial_next, function( e ) {
 
 			remove_tutorial_step();
-
 			step += 1;
 			get_tutorial_step();
-
 			e.preventDefault();
 
 		});
@@ -50,10 +48,8 @@
 		$( 'body' ).on('click', '.'+ config.tutorial_previous, function( e ) {
 
 			remove_tutorial_step();
-
 			step -= 1;
 			get_tutorial_step();
-
 			e.preventDefault();
 
 		});
@@ -62,7 +58,6 @@
 
 			$('.tutorial-item-wrap').remove();
 			step = 0;
-
 			e.preventDefault();
 
 		});
@@ -71,14 +66,22 @@
 
 			$('.tutorial-item-wrap').remove();
 			step = 0;
-
 			get_tutorial_step();
+			e.preventDefault();
 
+		});
+
+		$('body').on('click', '.'+ config.tutorial_start, function( e ) {
+
+			step = 0;
+			get_tutorial_step();
 			e.preventDefault();
 
 		});
 
 		function get_tutorial_step() {
+
+			console.log( $steps[step] );
 
 			var tpl = template;
 

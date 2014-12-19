@@ -261,17 +261,53 @@
 var tutorial = {
 
 	'steps' : [
-		{ 'target' : '.tutorial-search', 'direction' : 'left', 'title' : 'Searching made easy', 'content' : 'We make it easy for you to quickly search our application for the items your looking for and matter to you most!', 'actions' : ['next'] },
-		{ 'target' : '.tutorial-profile', 'direction' : 'right', 'title' : 'User profile', 'content' : 'Quick view your profile and edit settings with ease including privacy and security!', 'actions' : ['previous','next'] },
-		{ 'target' : '.tutorial-sidebar-navigation', 'direction' : 'left', 'title' : 'Sidebar navigation', 'content' : 'Everything you need in one central place to easily navigate from page to page and find the things you need most!', 'actions' : ['previous','next'] },
-		{ 'target' : '.tutorial-progress', 'direction' : 'left', 'title' : 'Progress bar', 'content' : 'See how far you are in completing your profile, compare with friends to see who has developed their profile the most!', 'actions' : ['previous','next'] },
-		{ 'target' : '.tutorial-add-widget', 'direction' : 'right', 'title' : 'Create custom widgets', 'content' : 'We create easy to predefined sets of data that allow you to completely customize your sidebar in an easy and fun way, give it a shot its a lot of fun!', 'actions' : ['previous','next'] },
-		{ 'target' : '.tutorial-add-user', 'direction' : 'right', 'title' : 'Create Add users', 'content' : 'Add a user is an easy way to add another user, simply fill out the form and click submit, the data will be saved and you\'ll get credit if we ever convert that user into a customer', 'actions' : ['previous','completed'] }
+		{ 
+			'target' : '.tutorial-search', 
+			'direction' : 'left', 
+			'title' : 'Searching made easy', 
+			'content' : 'We make it easy for you to quickly search our application for the items your looking for and matter to you most!', 
+			'actions' : ['next'] 
+		},
+		{ 
+			'target' : '.tutorial-profile', 
+			'direction' : 'right', 
+			'title' : 'User profile', 
+			'content' : 'Quick view your profile and edit settings with ease including privacy and security!', 
+			'actions' : ['previous','next'] 
+		},
+		{ 
+			'target' : '.tutorial-sidebar-navigation', 
+			'direction' : 'left', 
+			'title' : 'Sidebar navigation', 
+			'content' : 'Everything you need in one central place to easily navigate from page to page and find the things you need most!', 
+			'actions' : ['previous','next'] 
+		},
+		{ 
+			'target' : '.tutorial-progress', 
+			'direction' : 'left', 
+			'title' : 'Progress bar', 
+			'content' : 'See how far you are in completing your profile, compare with friends to see who has developed their profile the most!', 
+			'actions' : ['previous','next'] 
+		},
+		{ 
+			'target' : '.tutorial-add-widget', 
+			'direction' : 'right', 
+			'title' : 'Create custom widgets', 
+			'content' : 'We create easy to predefined sets of data that allow you to completely customize your sidebar in an easy and fun way, give it a shot its a lot of fun!', 
+			'actions' : ['previous','next'] 
+		},
+		{ 
+			'target' : '.tutorial-add-user', 
+			'direction' : 'right', 
+			'title' : 'Create Add users', 
+			'content' : 'Add a user is an easy way to add another user, simply fill out the form and click submit, the data will be saved and you\'ll get credit if we ever convert that user into a customer', 
+			'actions' : ['previous','completed'] 
+		}
 	]
 
 };
 
-$( tutorial ).tutorialJS();
+$( tutorial ).tutorialJS({ autostart: false });
 </script>
 
 </body>
