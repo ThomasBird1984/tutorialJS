@@ -165,6 +165,12 @@
 
 			};
 
+			if( $steps[step].substeps ) {
+
+				substepit( $steps[step].substeps );
+
+			}
+
 			return tpl;
 
 		}
@@ -188,6 +194,27 @@
 
 		}
 
+		function substepit( steps ) {
+
+/*
+var maxCount = 100,
+	count = 1,
+	interval = 3,
+	mod = 0;
+
+for( i = 0; i < maxCount; i++ ) {
+
+	mod = count % interval;
+
+	console.log( mod, mod === 0 );
+
+	count++;
+
+}
+*/
+
+		}
+
 		/**
 		 *	A helper method that is similar to PHP ucfirst
 		**/
@@ -198,3 +225,17 @@
 	};
 	
 }) ( jQuery );
+
+/*
+
+start timer
+
+check to see if timer currently is modulus of user defined duration
+
+if it is trigger event on desired target
+
+run counter to keep track of when to stop intervals
+
+stop intervals
+
+*/

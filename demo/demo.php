@@ -243,7 +243,7 @@
 				</div>
 
 			</div>
-			<div class="panel-footer">
+			<div class="panel-footer tutorial-multi-step">
 				<a href="#">Remove user</a>
 			</div>
 		</div>
@@ -301,7 +301,22 @@ var tutorial = {
 			'direction' : 'right', 
 			'title' : 'Create Add users', 
 			'content' : 'Add a user is an easy way to add another user, simply fill out the form and click submit, the data will be saved and you\'ll get credit if we ever convert that user into a customer', 
-			'actions' : ['previous','completed'] 
+			'actions' : ['previous','next'] 
+		},
+		{ 
+			'target' : '.tutorial-multi-step', 
+			'direction' : 'right', 
+			'title' : 'Multiple step example', 
+			'content' : 'This allows a user to designate multiple steps within one parent step in a timeline way. The steps are set at increments in milliseconds, a single number must be used for increment between each individual step.', 
+			'actions' : ['previous','completed'],
+			'substeps' : {
+				'duration' : 1000,
+				'step' : [
+					{ 'target' : '#home-tab', 'action' : 'click' },
+					{ 'target' : '#profile', 'action' : 'click' },
+					{ 'target' : '#myTabDrop1', 'action' : 'click' }
+				]
+			}
 		}
 	]
 
