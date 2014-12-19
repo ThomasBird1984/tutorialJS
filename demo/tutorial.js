@@ -2,9 +2,9 @@
 	
 	$.fn.tutorialJS = function( options ) {
 
-		/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Configuration Settings    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+		/**
+		 *	Configuration settings
+		**/
 		var config = $.extend({
 			'tutorial_btn' : 'tutorial-btn',
 			'tutorial_next' : 'tutorial-next',
@@ -17,72 +17,133 @@
 			'autostart' : false
 		}, options );
 
+		/**
+		 *	Definition of some base variables for later use
+		**/
 		var step = 0,
 			$steps = this[0].steps,
-			compiled_actions = '',
+			compiled_actions = clickAction = '',
 			replacements = {'tutorial-direction' : 'direction', 'tutorial-title' : 'title', 'tutorial-content' : 'content', 'tutorial-actions' : 'actions' },
 			template = '<div class="tutorial-item-wrap [[tutorial-direction]]"><div class="tutorial-arrow"></div><div class="tutorial-item-header">[[tutorial-title]]</div><div class="tutorial-item-content">[[tutorial-content]]</div><div class="tutorial-item-actions">[[tutorial-actions]]</div></div>',
 			nav_height = $( '.'+ config.nav_selector ).outerHeight(),
 			el = '',
-			offset = 0;
+			offset = 0,
+			getNextStep = true;
 
-		// add a position relative to all wrapping elements for proper placement of tutorial elements
+		/**
+		 *	Adds a position relative class to each element for proper positioning
+		**/
 		$( this[0].steps ).each( function() {
 			$( this.target ).addClass('class-tutorial-relative');
 		});
 
+		/**
+		 *	If set to autostart, tutorial starts once page loads
+		**/
 		if( config.autostart ) {
 			$( window ).on('load', function() {
 				get_tutorial_step();
 			});
 		}
 
-		$( 'body' ).on('click', '.'+ config.tutorial_next, function( e ) {
+		/**
+		 *	Event listener that controls all click actions for tutorial
+		**/
+		$( 'body' ).on('click', '.'+ config.tutorial_btn, function( e ) {
 
-			remove_tutorial_step();
-			step += 1;
+			clickAction = $( this ).data('action');
+
+			switch( clickAction ) {
+				case 'start':
+
+					getNextStep = true;
+					step = 0;
+
+				break;
+
+				case 'next':
+					
+					getNextStep = true;
+					step += 1;
+
+				break;
+
+				case 'previous':
+
+					getNextStep = true;
+					step -= 1;
+
+				break;
+
+				case 'completed':
+
+					getNextStep = false;
+					step = 0;
+
+				break;
+
+				case 'restart':
+
+					getNextStep = true;
+					step = 0;
+
+				break;
+			}
+
 			get_tutorial_step();
 			e.preventDefault();
 
 		});
 
-		$( 'body' ).on('click', '.'+ config.tutorial_previous, function( e ) {
-
-			remove_tutorial_step();
-			step -= 1;
-			get_tutorial_step();
-			e.preventDefault();
-
-		});
-
-		$( 'body' ).on('click', '.'+ config.tutorial_complete, function( e ) {
-
-			$('.tutorial-item-wrap').remove();
-			step = 0;
-			e.preventDefault();
-
-		});
-
-		$('body').on('click', '.'+ config.tutorial_restart, function( e ) {
-
-			$('.tutorial-item-wrap').remove();
-			step = 0;
-			get_tutorial_step();
-			e.preventDefault();
-
-		});
-
-		$('body').on('click', '.'+ config.tutorial_start, function( e ) {
-
-			step = 0;
-			get_tutorial_step();
-			e.preventDefault();
-
-		});
-
+		/**
+		 *	This method brings everything together and controls the plugins functionality
+		**/
 		function get_tutorial_step() {
 
-			console.log( $steps[step] );
+			// remove previous tutorial step
+			remove_tutorial_step();
+
+			if( getNextStep ) {
+
+				// build template step for tutorial
+				tpl = build_template();
+
+				// scroll to correct location of page
+				scroll_page( $steps[step].target );
+
+				// place content
+				$( $steps[step].target ).append( tpl );
+
+			}
+
+		}
+
+		/**
+		 *	Removes all tutorial steps
+		**/
+		function remove_tutorial_step() {
+			$('.tutorial-item-wrap').remove();
+		}
+
+		/**
+		 *	The method that scrolls to the correct location on page
+		 *
+		 *	@var String 
+		**/
+		function scroll_page( target ) {
+			// scroll to element				
+			el = target;
+			offset = $( el ).parent().offset().top;
+		
+			$('body,html').animate({
+				scrollTop: ( offset - nav_height )
+			}, config.speed );
+		}
+
+		/**
+		 *	The method that builds the html markup for the step
+		**/
+		function build_template() {
 
 			var tpl = template;
 
@@ -104,30 +165,22 @@
 
 			};
 
-			// scroll to element				
-			el = $steps[step].target;
-			offset = $( el ).parent().offset().top;
-		
-			$('body,html').animate({
-				scrollTop: ( offset - nav_height )
-			}, config.speed );
-
-			// place content
-			$( $steps[step].target ).append( tpl );
+			return tpl;
 
 		}
 
-		function remove_tutorial_step() {
-			$('.tutorial-item-wrap').remove();
-		}
-
+		/**
+		 *	The method that builds the action buttons for the step determined by the user array
+		 *
+		 *	@var Array
+		**/
 		function action_items( actions ) {
 
 			var action_html = '';
 
 			for( i = 0; i < actions.length; i++ ) {
 
-				action_html += '<a href="#" class="tutorial-btn tutorial-'+ actions[i] +'">'+ actions[i].capitalize() +'</a> ';
+				action_html += '<a href="#" class="tutorial-btn" data-action="'+ actions[i] +'">'+ actions[i].capitalize() +'</a> ';
 
 			}
 
@@ -135,6 +188,9 @@
 
 		}
 
+		/**
+		 *	A helper method that is similar to PHP ucfirst
+		**/
 		String.prototype.capitalize = function() {
 		    return this.charAt(0).toUpperCase() + this.slice(1);
 		}
