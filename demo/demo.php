@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/bootstrap-bootswatch.min.css" />
 <link rel="stylesheet" href="css/tutorial.css" />
-<link rel="stylesheet" href="css/tutorial-theme-dark.css" />
+<link rel="stylesheet" href="css/tutorial-theme-light.css" />
 <link rel="stylesheet" href="css/style.css" />
 
 </head>
@@ -308,7 +308,7 @@ var tutorial = {
 			'direction' : 'right', 
 			'title' : 'Multiple step example', 
 			'content' : 'This allows a user to designate multiple steps within one parent step in a timeline way. The steps are set at increments in milliseconds, a single number must be used for increment between each individual step.', 
-			'actions' : ['previous','completed'],
+			'actions' : ['previous','completed','startover'],
 			'substeps' : {
 				'duration' : 5000,
 				'step' : [

@@ -82,6 +82,13 @@
 
 				break;
 
+				case 'startover':
+
+					getNextStep = true;
+					step = 0;
+
+				break;
+
 				case 'restart':
 
 					getNextStep = true;
