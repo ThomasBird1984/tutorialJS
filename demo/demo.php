@@ -310,11 +310,11 @@ var tutorial = {
 			'content' : 'This allows a user to designate multiple steps within one parent step in a timeline way. The steps are set at increments in milliseconds, a single number must be used for increment between each individual step.', 
 			'actions' : ['previous','completed'],
 			'substeps' : {
-				'duration' : 1000,
+				'duration' : 5000,
 				'step' : [
-					{ 'target' : '#home-tab', 'action' : 'click' },
-					{ 'target' : '#profile', 'action' : 'click' },
-					{ 'target' : '#myTabDrop1', 'action' : 'click' }
+					{ 'target' : '#profile-tab', 'action' : 'click' },
+					{ 'target' : '#myTabDrop1', 'action' : 'click' },
+					{ 'target' : '#dropdown1-tab', 'action' : 'click' }
 				]
 			}
 		}

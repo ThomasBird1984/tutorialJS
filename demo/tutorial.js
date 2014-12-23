@@ -194,25 +194,44 @@
 
 		}
 
+		var subcounter, 
+			subCurrent = 1, 
+			subMax = stepInt = subStepCount = 0;
+
 		function substepit( steps ) {
 
-/*
-var maxCount = 100,
-	count = 1,
-	interval = 3,
-	mod = 0;
+			subMax = ( steps.duration / 1000 ) * steps.step.length;
+			stepInt = subMax / steps.step.length;
 
-for( i = 0; i < maxCount; i++ ) {
+			subcounter = setInterval( function() {
 
-	mod = count % interval;
+				if( ( subCurrent % stepInt ) === 0 ) {
+					
+					if( typeof steps.step[subStepCount].action == 'function' ) {
 
-	console.log( mod, mod === 0 );
+						steps.step[subStepCount].action.call();
 
-	count++;
+					} else {
+						
+						$( steps.step[subStepCount].target ).trigger( steps.step[subStepCount].action );
 
-}
-*/
+					}
 
+					subStepCount++;
+				}
+
+				if( subCurrent === subMax ) {
+					stopSubStep();
+				}
+
+				subCurrent++;
+
+			}, 1000 );
+
+		}
+
+		function stopSubStep() {
+			clearInterval( subcounter );
 		}
 
 		/**
