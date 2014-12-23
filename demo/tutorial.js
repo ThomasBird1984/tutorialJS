@@ -14,7 +14,7 @@
 			'tutorial_restart' : 'tutorial-restart',
 			'nav_selector' : 'navbar',
 			'speed' : 250,
-			'autostart' : false
+			'autostart' : true
 		}, options );
 
 		/**

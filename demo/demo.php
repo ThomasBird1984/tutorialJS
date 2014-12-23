@@ -322,7 +322,7 @@ var tutorial = {
 
 };
 
-$( tutorial ).tutorialJS({ autostart: false });
+$( tutorial ).tutorialJS();
 </script>
 
 </body>
