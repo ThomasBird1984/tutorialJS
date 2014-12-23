@@ -5,7 +5,7 @@
 	.tutorial-item-wrap.right { right: 0; }
 
 	.tutorial-item-wrap a {}
-	.tutorial-arrow { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; margin-top: -10px; }
+	.tutorial-arrow { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; margin-top: -9px; }
 		.tutorial-item-wrap.left .tutorial-arrow { float: left; margin-left: 20px; }
 		.tutorial-item-wrap.right .tutorial-arrow { float: right; margin-right: 20px; }
 	.tutorial-item-header, .tutorial-item-content, .tutorial-item-actions { padding: 10px 15px;  }

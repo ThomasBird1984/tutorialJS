@@ -244,17 +244,3 @@
 	};
 	
 }) ( jQuery );
-
-/*
-
-start timer
-
-check to see if timer currently is modulus of user defined duration
-
-if it is trigger event on desired target
-
-run counter to keep track of when to stop intervals
-
-stop intervals
-
-*/

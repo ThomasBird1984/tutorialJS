@@ -1,0 +1,8 @@
+.tutorial-item-wrap { background: #fff; border: 1px solid #aaa; -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5); -moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5); box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);}
+	.tutorial-item-wrap a { color: #666; }
+	.tutorial-arrow { border-bottom: 15px solid #eee; }
+	.tutorial-item-header, .tutorial-item-content, .tutorial-item-actions { color: #666; }
+		.tutorial-item-header, .tutorial-item-actions { background: #eee; -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.75);-moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.75);box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.75); }
+		.tutorial-item-header { border-bottom: 1px solid #ccc; }
+		.tutorial-item-content { padding: 20px; }
+		.tutorial-item-actions { border-top: 1px solid #ccc; }
